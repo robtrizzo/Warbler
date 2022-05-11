@@ -1,0 +1,25 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+*/node_modules
+
+# testing
+warbler-client/coverage
+
+# production
+warbler-client/build
+
+# misc
+warbler-client/.DS_Store
+warbler-client/.env.local
+warbler-client/.env.development.local
+warbler-client/.env.test.local
+warbler-client/.env.production.local
+
+warbler-client/npm-debug.log*
+warbler-client/yarn-debug.log*
+warbler-client/yarn-error.log*
+
+warbler-server/.env
+
+/.vscode
