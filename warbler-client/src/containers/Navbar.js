@@ -1,51 +1,49 @@
-import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../store/actions/auth';
 import Logo from '../images/warbler-logo.png'
 
-class Navbar extends Component {
-    logout = e => {
+function Navbar(props) {
+    const logout = e => {
         e.preventDefault();
-        this.props.logout();
+        props.logout();
     }
-    render() {
-        return (
-            <nav className='navbar navbar-expand'>
-                <div className='container-fluid'>
-                    <div className="navbar-header">
-                        <Link to='/' className='navbar-brand'>
-                            <img src={Logo} alt='Warbler Home' />
-                        </Link>
-                    </div>
-                    {this.props.currentUser.isAuthenticated
-                        ? (
-                            <ul className="nav navbar-nav navbar-right">
-                                <li>
-                                    <Link
-                                        to={`/users/${this.props.currentUser.user.id}/messages/new`}
-                                    >
-                                        New Message
-                                    </Link>
-                                    <a onClick={this.logout}>Log Out</a>
-                                </li>
-                            </ul>
-                        )
-                        : (
-                            <ul className="nav navbar-nav navbar-right">
-                                <li>
-                                    <Link to='/signup'>Sign Up</Link>
-                                </li>
-                                <li>
-                                    <Link to='/signin'>Sign In</Link>
-                                </li>
-                            </ul>
-                        )
-                    }
+    return (
+        <nav className='navbar navbar-expand'>
+            <div className='container-fluid'>
+                <div className="navbar-header">
+                    <Link to='/' className='navbar-brand'>
+                        <img src={Logo} alt='Warbler Home' />
+                    </Link>
                 </div>
-            </nav>
-        )
-    }
+                {props.currentUser.isAuthenticated
+                    ? (
+                        <ul className="nav navbar-nav navbar-right">
+                            <li>
+                                <Link
+                                    to={`/users/${props.currentUser.user.id}/messages/new`}
+                                >
+                                    New Message
+                                </Link>
+                                <a onClick={logout}>Log Out</a>
+                            </li>
+                        </ul>
+                    )
+                    : (
+                        <ul className="nav navbar-nav navbar-right">
+                            <li>
+                                <Link to='/signup'>Sign Up</Link>
+                            </li>
+                            <li>
+                                <Link to='/signin'>Sign In</Link>
+                            </li>
+                        </ul>
+                    )
+                }
+            </div>
+        </nav>
+    )
+
 }
 
 function mapStateToProps(state) {

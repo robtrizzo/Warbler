@@ -16,9 +16,8 @@ export function setTokenHeader(token) {
  * @returns 
  */
 export function apiCall(method, path, data) {
+    console.log(method, path)
     return new Promise((resolve, reject) => {
-        console.log('in the promise')
-        console.log(method, path, data)
         /**
          * when we get data back from axios, it always comes in the 
          * form of an object called 'response' with a sub-object 
@@ -27,11 +26,9 @@ export function apiCall(method, path, data) {
          */
         return axios[method.toLowerCase()](path, data)
             .then(res => {
-                console.log(res)
                 return resolve(res.data);
             })
             .catch(err => {
-                console.log(err)
                 return reject(err.response.data.error);
             })
     })

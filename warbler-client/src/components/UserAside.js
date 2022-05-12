@@ -1,4 +1,3 @@
-import React from "react";
 import DefaultProfileImage from '../images/default-profile-image.jpg';
 
 const UserAside = ({ profileImageUrl, username }) => (

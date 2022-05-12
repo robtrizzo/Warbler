@@ -13,12 +13,17 @@ export const remove = id => ({
 })
 
 export const fetchMessages = () => {
+    console.log('in fetchMessages')
     return dispatch => {
+        console.log(dispatch)
         return apiCall('get', '/api/messages')
             .then(res => {
                 dispatch(loadMessages(res));
             })
-            .catch(err => addError(err.message));
+            .catch(err => {
+                console.log('in the error', err)
+                addError(err.message)
+            });
     }
 };
 

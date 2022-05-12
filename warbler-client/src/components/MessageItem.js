@@ -1,4 +1,3 @@
-import React from "react";
 import Moment from 'react-moment';
 import { Link } from "react-router-dom";
 import DefaultProfileImage from '../images/default-profile-image.jpg';
